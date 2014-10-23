@@ -32,7 +32,7 @@ Contributors
 ============
 
 * Clay Beatty
-* Craig Dunn
+* Craig Dunn - https://github.com/conceptdev
 * Joel Mansford
 * Tim Abell <tim@timwise.co.uk>
 * 3Chillies - http://www.3chillies.co.uk/
