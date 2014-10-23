@@ -7,6 +7,8 @@ https://github.com/timabell/database-diagram-scm
 
 This is a packaging and modification of pieces of the puzzle provided by others in the community.
 
+Thanks to the lovely folks at [3Chillies](http://www.3chillies.co.uk/) for allowing me to publish the changes I made while contracting for them.
+
 Upstream / references
 =====================
 
@@ -25,5 +27,6 @@ Contributors
 * Clay Beatty
 * Craig Dunn
 * Joel Mansford
-* Tim Abell
+* Tim Abell <tim@timwise.co.uk>
+* 3Chillies - http://www.3chillies.co.uk/
 * Anyone else in the git history ;-)
