@@ -7,8 +7,10 @@ param($server=".", $database, $outputFolder="diagrams")
 if ( -not (Test-Path $outputFolder) ) {New-Item $outputFolder  -Type Directory  | Out-Null}
 
 $conn = new-object System.Data.SqlClient.SqlConnection
+# Timeout is in seconds, extended from 30sec default to cope with databases with many diagrams
+# https://github.com/timabell/database-diagram-scm/issues/1
 $conn.ConnectionString = "server=" + $server + ";integrated security=true;database=" + $database
-"Connecting to server " + $server + " database=" + $database
+"Server: '" + $server + "' database: '" + $database + "'"
 $conn.Open()
 $cmd = new-object System.Data.SqlClient.SqlCommand
 $cmd.Connection=$conn
@@ -20,7 +22,11 @@ foreach ($f in Get-ChildItem -path "lib\" -Filter *.sql | sort-object )
 	$result = $cmd.ExecuteNonQuery()
 }
 
+"Requesting diagram definitions..."
 $cmd.CommandText = "EXEC  [dbo].[spDev_ScriptDiagrams] @name = NULL"
+$timeout = 300;
+$cmd.CommandTimeout = $timeout;
+"Timeout set to " + $timeout + " seconds..."
 $dr=$cmd.ExecuteReader()
 while ($dr.Read()) {
 	$name = $dr.GetValue(0)
@@ -29,5 +35,7 @@ while ($dr.Read()) {
 	$line | out-file $f -encoding ASCII
 	"Scripted '"+$name+"' to " +$f
 }
+"Diagrams retrieved. Closing connections..."
 $dr.Close()
 $conn.Close()
+"Done."
