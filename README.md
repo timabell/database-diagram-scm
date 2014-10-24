@@ -37,3 +37,11 @@ Contributors
 * Tim Abell <tim@timwise.co.uk>
 * 3Chillies - http://www.3chillies.co.uk/
 * Anyone else in the git history ;-)
+
+Licence
+=======
+
+MIT Licence - http://opensource.org/licenses/MIT
+
+Permission has been gained from all of the above authors to licence this code under the
+MIT Licence.
