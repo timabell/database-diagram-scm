@@ -8,4 +8,4 @@ Setlocal EnableExtensions
 if "!server!"==""   set server=.
 if "!database!"=="" set database=ExampleDb
 
-for /f %%a IN ('dir /b /s *.sql') do call sqlcmd -S %server% -d %database%  -i %%a
+for /f "delims=" %%a IN ('dir /b /s *.sql') do call sqlcmd -S %server% -d %database%  -i %%~sdpnxa
