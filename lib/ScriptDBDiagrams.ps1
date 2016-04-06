@@ -35,7 +35,12 @@ while ($dr.Read()) {
 	$line | out-file $f -encoding ASCII
 	"Scripted '"+$name+"' to " +$f
 }
-"Diagrams retrieved. Closing connections..."
 $dr.Close()
+
+"Diagrams retrieved. Cleaning prerequisites..."
+$cmd.CommandText = [IO.File]::ReadAllText("lib\1-cleanup.sql")
+$result = $cmd.ExecuteNonQuery()
+
+"Closing connections..."
 $conn.Close()
 "Done."
